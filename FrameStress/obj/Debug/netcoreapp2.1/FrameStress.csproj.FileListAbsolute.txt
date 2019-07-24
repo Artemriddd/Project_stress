@@ -1,0 +1,11 @@
+D:\C#_programm\Project_stress\FrameStress\bin\Debug\netcoreapp2.1\FrameStress.deps.json
+D:\C#_programm\Project_stress\FrameStress\bin\Debug\netcoreapp2.1\FrameStress.runtimeconfig.json
+D:\C#_programm\Project_stress\FrameStress\bin\Debug\netcoreapp2.1\FrameStress.runtimeconfig.dev.json
+D:\C#_programm\Project_stress\FrameStress\bin\Debug\netcoreapp2.1\FrameStress.dll
+D:\C#_programm\Project_stress\FrameStress\bin\Debug\netcoreapp2.1\FrameStress.pdb
+D:\C#_programm\Project_stress\FrameStress\obj\Debug\netcoreapp2.1\FrameStress.csprojAssemblyReference.cache
+D:\C#_programm\Project_stress\FrameStress\obj\Debug\netcoreapp2.1\FrameStress.csproj.CoreCompileInputs.cache
+D:\C#_programm\Project_stress\FrameStress\obj\Debug\netcoreapp2.1\FrameStress.AssemblyInfoInputs.cache
+D:\C#_programm\Project_stress\FrameStress\obj\Debug\netcoreapp2.1\FrameStress.AssemblyInfo.cs
+D:\C#_programm\Project_stress\FrameStress\obj\Debug\netcoreapp2.1\FrameStress.dll
+D:\C#_programm\Project_stress\FrameStress\obj\Debug\netcoreapp2.1\FrameStress.pdb
