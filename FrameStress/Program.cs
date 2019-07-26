@@ -19,6 +19,7 @@ namespace FrameStress
             SkinGeom skin = new SkinGeom();
             skin.GetSkingGeom();
             Console.WriteLine(skin.SetSkinTickness);
+            Console.WriteLine(skin.SetskinCoef);
 
 
 
@@ -39,7 +40,7 @@ namespace FrameStress
             Console.WriteLine(load.SetframeShearForce);
             Console.WriteLine(load.SetframeMoment);
 
-            float criticalSkinSigma = BucklingSkin.Buckling(skin.SetskinCoef,prop.SetskinElasticModule,skin.SetskinHeight,skin.SetSkinTickness);
+            float criticalSkinSigma = BucklingSkin.Buckling(skin.SetskinCoef, prop.SetskinElasticModule, skin.SetskinHeight, skin.SetSkinTickness);
 
             Console.WriteLine(criticalSkinSigma);
 
@@ -47,10 +48,34 @@ namespace FrameStress
 
             Console.WriteLine(criticalForce);
 
+
+
+
+
             if (criticalForce > load.SetskinNormalForce)
             {
                 Console.WriteLine("Обшивка устойчивость не теряет");
+                Console.WriteLine(frame.GetInertion());
+                Console.WriteLine(frame.GetCenterOrigin());
+                double tau = load.SetframeShearForce / (frame.SetticknessframeWall * frame.SetframeWall);
+                double sigmaMomentInsideBelt = load.SetframeMoment * (frame.SetframeWall - frame.GetCenterOrigin()) / frame.GetInertion();
+                double sigmaMomentOutsideBelt = load.SetframeMoment * frame.GetCenterOrigin() / frame.GetInertion();
+                double sigmaN = load.SetframeNormalForce / frame.SetArea;
+                Console.WriteLine("Тау " + tau);
+                Console.WriteLine("Сигма от момента внутр пояса " + sigmaMomentInsideBelt);
+                Console.WriteLine("Сигма от момента внеш пояса " + sigmaMomentOutsideBelt);
+                Console.WriteLine("Сигма Норм " + sigmaN);
             }
+
+
+
+
+
+
+
+
+
+
             else
             {
                 load.SetframeNormalForce += 2 * (load.SetskinNormalForce - (int)criticalForce);

@@ -6,13 +6,14 @@ namespace FrameStress
 {
     class FrameGeom
     {
-        private int insideBelt;
-        private int outsideBelt;
-        private int frameWall;
-        private int ticknessinsideBelt;
-        private int ticknessoutsideBelt;
-        private int ticknessframeWall;
-        public int SetinsideBelt
+        private double insideBelt;
+        private double outsideBelt;
+        private double frameWall;
+        private double ticknessinsideBelt;
+        private double ticknessoutsideBelt;
+        private double ticknessframeWall;
+        private double area;
+        public double SetinsideBelt
         {
             get
             {
@@ -26,7 +27,7 @@ namespace FrameStress
                 }
             }
         }
-        public int SetoutsideBelt
+        public double SetoutsideBelt
         {
             get
             {
@@ -40,7 +41,7 @@ namespace FrameStress
                 }
             }
         }
-        public int SetframeWall
+        public double SetframeWall
         {
             get
             {
@@ -54,7 +55,7 @@ namespace FrameStress
                 }
             }
         }
-        public int SetticknessinsideBelt
+        public double SetticknessinsideBelt
         {
             get
             {
@@ -68,7 +69,7 @@ namespace FrameStress
                 }
             }
         }
-        public int SetticknessoutsideBelt
+        public double SetticknessoutsideBelt
         {
             get
             {
@@ -82,7 +83,7 @@ namespace FrameStress
                 }
             }
         }
-        public int SetticknessframeWall
+        public double SetticknessframeWall
         {
             get
             {
@@ -96,27 +97,56 @@ namespace FrameStress
                 }
             }
         }
+        public double SetArea
+        {
+            get
+            {
+                return area;
+            }
+            private set
+            {
+                if (value > 0)
+                {
+                    area = value;
+                }
+            }
+        }
 
         public void GetFrGeom()
         {
             Console.WriteLine("Введите ширину внутреннего пояса шпангоута");
-            SetinsideBelt = int.Parse(Console.ReadLine());
+            SetinsideBelt = double.Parse(Console.ReadLine());
 
             Console.WriteLine("Введите толщину внутреннего пояса шпангоута");
-            SetticknessinsideBelt = int.Parse(Console.ReadLine());
+            SetticknessinsideBelt = double.Parse(Console.ReadLine());
 
             Console.WriteLine("Введите высоту стенки пояса шпангоута");
-            SetframeWall = int.Parse(Console.ReadLine());
+            SetframeWall = double.Parse(Console.ReadLine());
 
             Console.WriteLine("Введите толщину стенки шпангоута");
-            SetticknessframeWall = int.Parse(Console.ReadLine());
+            SetticknessframeWall = double.Parse(Console.ReadLine());
 
             Console.WriteLine("Введите ширину внешнего пояса шпангоута");
-            SetoutsideBelt = int.Parse(Console.ReadLine());
+            SetoutsideBelt = double.Parse(Console.ReadLine());
 
             Console.WriteLine("Введите толщину внешнего пояса шпангоута");
-            SetticknessoutsideBelt = int.Parse(Console.ReadLine());
+            SetticknessoutsideBelt = double.Parse(Console.ReadLine());
         }
+        public double GetInertion()
+        {
+            double inertion = Math.Pow(SetinsideBelt,3) * SetticknessinsideBelt + Math.Pow(SetoutsideBelt, 3) * SetticknessoutsideBelt + Math.Pow(SetticknessframeWall, 3) * SetframeWall;
+            return inertion;
+        }
+        public double GetCenterOrigin()
+        {
+            SetArea = SetinsideBelt * SetticknessinsideBelt + SetoutsideBelt * SetticknessoutsideBelt + SetticknessframeWall * SetframeWall;
+            double statInertion = (SetinsideBelt * SetticknessinsideBelt) * (SetframeWall + SetticknessinsideBelt / 2) + (SetticknessframeWall * SetframeWall) * SetframeWall / 2 + (SetoutsideBelt * SetticknessoutsideBelt) * SetticknessoutsideBelt / 2;
+            double centerOrigin = statInertion / area;
+            return centerOrigin;
+        }
+
+
+
     }
 }
 
