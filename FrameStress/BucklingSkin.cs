@@ -7,9 +7,9 @@ namespace FrameStress
     class BucklingSkin
     {
 
-        public static float Buckling(float k, int e, int b, int delta)
+        public static double Buckling(double k, double e, double b, double delta)
         {
-            float critical =  k * e / (b / delta * b / delta);
+            double critical =  k * e / (b / delta * b / delta);
             return critical;
         }
     }
